@@ -1,7 +1,7 @@
 #include <iostream>
+#include <fstream>
 #include "DefaultCalculator.h"
 using namespace std;
-
 
 void testDouble() {
 	/*
@@ -40,13 +40,63 @@ void testString() {
 	cout << "\""<<vs2 <<"\", size = "<<vs2.size()<< endl;
 }
 
+void doTest() {
+	ifstream fin;
+	fin.open("test.txt", ios::in);
+	if (!fin.is_open()) {
+		cout << "Can\'t open file with name" << endl;
+		cout << "\ttest.txt" << endl;
+		throw;
+	}
+
+	string s = "", vs;
+	double res, trueRes;
+	stringstream vss;
+
+	my::DefaultCalculator calc;
+	bool allTestsFinished = true;
+	while (getline(fin, s)) {
+		res = calc.calculateIn(s);
+//		res = my::DefaultCalculator::calculate(s);
+		getline(fin, vs);
+
+		vss << vs;
+		vss >> trueRes;
+		if (trueRes != res) {
+			allTestsFinished = false;
+			cout << "TEST was not passed:" << endl;
+			cout << "s = \"" << s << "\"" << endl;
+			cout << "trueRes = " << trueRes << ", res = " << res << endl;
+			break;
+		}
+		getline(fin, vs);
+
+		s = "";
+		vss.clear();
+		vss.str("");
+		vs = "";
+#ifdef MDBG
+		cout << endl << endl;
+#endif
+	}
+	if (allTestsFinished) {
+		cout << "ALL TESTS WERE PASSED" << endl << endl;
+	}
+
+	fin.close();
+}
+
 int main() {
-//	testString();
+	doTest();
+
+	cout << setprecision(14);
 
 	while (true) {
 		try {
 			string s = "";
 			getline(cin, s);
+
+			if (s == "exit") { break; }
 
 			my::DefaultCalculator calc;
 			double res = calc.calculateIn(s);
@@ -57,6 +107,6 @@ int main() {
 		}
 	}
 
-	system("pause");
+//	system("pause");
 	return 0;
 }

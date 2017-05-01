@@ -53,27 +53,51 @@ public:
  * Абстрактный класс для бинарных операций. Может быть
  * создан только через потомков.
  *
+ * Имеет функцию operate, которая принимает 2 строки.
+ * Ее необходимо реализовать в классах-потомках.
  *
+ * Также есть функция, которая проверяет символ до операции.
+ * По дефолту - если символ цифра или скобка, то операция бинарная.
+ * Данная функция может быть изменена в классах-потомках.
  *
  */
 class BinaryOperation : public Operation {
 public:
+	//! Конструктор. Принимает имя операции и калькулятор, к которому можно обращаться.
 	BinaryOperation(const std::string& operName_in, Calculator& calc) : Operation(Type::Binary, operName_in, calc) {}
 
+	//! Функция вычисляет результат операции по типу " lhs oper rhs ".
 	virtual double operate(const std::string& lhs, const std::string& rhs) = 0;
+	//! Функция проверяет символ. Если true, то символ перед операцией означает, что операция бинарная.
 	virtual bool symbolBeforeIsNum(char c) const {
 		if (isdigit(c) || (c == ')') || (c == ']') || (c == '}'))		//значит это бинарный оператор
 			return true;
 		else                //значит не бинарный оператор
 			return false;
 	}
+
 };
 
+
+
+/*! \brief Абстрактный класс для унарных операций.
+ *
+ * Абстрактный класс для унарных операций. Может быть
+ * создан только через потомков.
+ *
+ * Имеет функцию operate, которая принимает одну строку.
+ * Ее необходимо реализовать в классах-потомках.
+ *
+ */
 class UnitOperation : public Operation {
 public:
+	//! Конструктор. Принимает имя операции и калькулятор, к которому можно обращаться.
 	UnitOperation(const std::string& operName_in, Calculator& calc) : Operation(Type::Unity, operName_in, calc) {}
 
+	//! Функция вычисляет результат операции по типу " oper s "
 	virtual double operate(const std::string& s) = 0;
+	//!
+	virtual bool symbolBefore(char c) const { return true; }
 };
 
 }

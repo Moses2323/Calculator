@@ -63,29 +63,32 @@ int Calculator::rscob(const std::string& s, int beg) {
 	throw my::SyntaxError(toStr(__FUNCTION__) + "(const string&,size_t)", __LINE__, __FILE__, "there is no opening bracket");
 }
 
-size_t Calculator::rfindPassBrackets(const std::string & s, const std::string& whatFind){
+size_t Calculator::rfindPassBrackets(const std::string & s, const std::string& whatFind, size_t beg){
 	int L = static_cast<int>(s.size());
 	int Lwf = static_cast<int>(whatFind.size());
 	if (Lwf == 0) {
 		return s.size();
 	}
 
+	if (beg > s.size() - 1)
+		beg = s.size() - 1;
+
 	bool found;
 
-	for (int i = L - 1; i >= 0; --i) {
+	for (int i = static_cast<int>(beg); i >= 0; --i) {
 		if ((s[i] == ')') || (s[i] == '}') || (s[i] == ']')){
 			i = rscob(s, i);
 		}
 		if (s[i] == whatFind[Lwf-1]) {
 			found = true;
 			for (int k = 2; k <= Lwf; ++k) {
-				if (s[i-k] != whatFind[Lwf-k]) {
+				if (s[i-k+1] != whatFind[Lwf-k]) {
 					found = false;
 					break;
 				}
 			}
 			if (found)
-				return i;
+				return i - Lwf + 1;
 		}
 	}
 
@@ -143,19 +146,71 @@ double Calculator::calculateIn(const std::string& s) {
 	size_t find;
 	BinaryOperation* bo;
 	UnitOperation* uo;
-	for (size_t i = 0; i < operations_.size(); ++i) {
-		find = rfindPassBrackets(s, operations_[i]->operName());
+	size_t begSymbol = std::string::npos;
+	bool needUseBegSymbol = false;
+
+	int Noper = static_cast<int>(operations_.size());
+
+	for (int i = 0; i < Noper; ++i) {
+		if (needUseBegSymbol) {
+			find = rfindPassBrackets(s, operations_[i]->operName(), begSymbol);
+			needUseBegSymbol = false;
+		}
+		else
+			find = rfindPassBrackets(s, operations_[i]->operName());
+
 		if (find != std::string::npos) {
 			if (operations_[i]->type() == Operation::Type::Binary) {			//бинарный оператор
 				if (find > 0) {
 					bo = static_cast<BinaryOperation*>(operations_[i].get());
+
+#ifdef MDBG
+					std::cout << "Binary operation found = " << operations_[i]->operName() << std::endl;
+					std::cout << "\t s1 = \"" << s.substr(0, find) << "\"" << std::endl;
+					std::cout << "\t s2 = \"" << s.substr(find + (bo->operName()).size())<< "\"" << std::endl;
+#endif
+
 					if (bo->symbolBeforeIsNum(s[find - 1])) {
+#ifdef MDBG
+						std::cout << "\tthis is real binary operation. do calculate." << std::endl;
+#endif
 						return bo->operate(s.substr(0, find), s.substr(find + (bo->operName()).size()));
+					}
+					else {
+						begSymbol = find - 1;
+						needUseBegSymbol = true;
+						--i;
+#ifdef MDBG
+						std::cout << "\tthis is NOT real binary operation. do nothing." << std::endl;
+#endif
+						continue;
 					}
 				}
 			}
 			else if (operations_[i]->type() == Operation::Type::Unity) {		//унарный оператор
 				uo = static_cast<UnitOperation*>(operations_[i].get());
+#ifdef MDBG
+				std::cout << "Unary operation found = " << operations_[i]->operName() << std::endl;
+				std::cout << "\t s = \"" << s.substr(find + uo->operName().size()) << "\"" << std::endl;
+#endif
+				if (find > 0) {
+					char vvc = s[find-1];
+					if (uo->symbolBefore(vvc)) {
+						double result = uo->operate(s.substr(find + uo->operName().size()));
+						std::stringstream vss;
+						vss.precision(15);
+						vss << result;
+						std::string vs = s.substr(0, find) + vss.str();
+					//	return uo->operate(s.substr(find + uo->operName().size()));
+						return calculateIn(vs);
+					}
+					else {
+						begSymbol = find - 1;
+						needUseBegSymbol = true;
+						--i;
+						continue;
+					}
+				}
 				return uo->operate(s.substr(find + uo->operName().size()));
 			}
 			else {
