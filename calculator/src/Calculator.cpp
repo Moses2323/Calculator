@@ -1,4 +1,4 @@
-#include "Calculator.h"
+#include <Calculator.h>
 
 namespace my {
 
@@ -224,7 +224,7 @@ double Calculator::calculateIn(const std::string& s) {
 		return d;
 	}
 	else {
-		throw my::SyntaxError(toStr(__FUNCTION__) + "(const string&)", __LINE__, __FILE__, "Can\'t recognize operation");
+	        throw my::SyntaxError(toStr(__FUNCTION__) + "(const string&)", __LINE__, __FILE__, "Can\'t recognize operation \'" + s + "\'");
 	}
 }
 

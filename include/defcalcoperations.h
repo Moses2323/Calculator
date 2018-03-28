@@ -3,6 +3,7 @@
 #define DEFAULT_CALCULATOR_OPERATIONS_30042017_GASPARYANMOSES
 
 #include <string>
+#include <cmath>
 #include "abstroperations.h"
 #include "Calculator.h"
 
@@ -79,7 +80,7 @@ class Arcsin : public UnitOperation {
 public:
 	explicit Arcsin(Calculator& calc) : UnitOperation("arcsin", calc) {}
 	virtual double operate(const std::string& s) override {
-		return asin(calculator_.calculateIn(s));
+		return std::asin(calculator_.calculateIn(s));
 	}
 };
 

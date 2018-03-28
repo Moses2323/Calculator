@@ -2,8 +2,6 @@
 #ifndef FORMISTAKES_30042017_GASPARYANMOSES
 #define FORMISTAKES_30042017_GASPARYANMOSES
 
-//#define MDBG
-
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -25,7 +23,7 @@ inline void print_mistaka(const std::string& funcName, int line, const std::stri
 }
 
 template<typename T>
-inline void printVec(const std::vector<T>& v, std::ostream& fout = cout) {
+inline void printVec(const std::vector<T>& v, std::ostream& fout = std::cout) {
 	fout << "[";
 	for (size_t i = 0; i < v.size(); ++i) {
 		fout << " " << v[i] << " ";
