@@ -7,7 +7,7 @@ CONFIG -= qt
 
 SOURCES += main.cpp
 
-DEFINES += TESTING
+# DEFINES += TESTING
 
 LIBS += \
     -lcalculator

@@ -64,7 +64,7 @@ int Calculator::rscob(const std::string& s, int beg) {
 }
 
 size_t Calculator::rfindPassBrackets(const std::string & s, const std::string& whatFind, size_t beg){
-	int L = static_cast<int>(s.size());
+//	int L = static_cast<int>(s.size());
 	int Lwf = static_cast<int>(whatFind.size());
 	if (Lwf == 0) {
 		return s.size();
@@ -160,7 +160,7 @@ double Calculator::calculateIn(const std::string& s) {
 			find = rfindPassBrackets(s, operations_[i]->operName());
 
 		if (find != std::string::npos) {
-			if (operations_[i]->type() == Operation::Type::Binary) {			//бинарный оператор
+			if (operations_[i]->type() == Operation::Type::Binary) {			//Р±РёРЅР°СЂРЅС‹Р№ РѕРїРµСЂР°С‚РѕСЂ
 				if (find > 0) {
 					bo = static_cast<BinaryOperation*>(operations_[i].get());
 
@@ -187,7 +187,7 @@ double Calculator::calculateIn(const std::string& s) {
 					}
 				}
 			}
-			else if (operations_[i]->type() == Operation::Type::Unity) {		//унарный оператор
+			else if (operations_[i]->type() == Operation::Type::Unity) {		//СѓРЅР°СЂРЅС‹Р№ РѕРїРµСЂР°С‚РѕСЂ
 				uo = static_cast<UnitOperation*>(operations_[i].get());
 #ifdef MDBG
 				std::cout << "Unary operation found = " << operations_[i]->operName() << std::endl;

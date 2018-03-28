@@ -12,11 +12,11 @@ namespace my {
 const double My_PI = 3.1415926535897932384626433832795;
 const double My_E = 2.7182818284590452353602874713527;
 
-// --------------- БИНАРНЫЕ ОПЕРАЦИИ
+// --------------- Р‘РРќРђР РќР«Р• РћРџР•Р РђР¦РР
 
-/*! \brief Операция + .
+/*! \brief РћРїРµСЂР°С†РёСЏ + .
  *
- * Операция сложения ( 2+3 ).
+ * РћРїРµСЂР°С†РёСЏ СЃР»РѕР¶РµРЅРёСЏ ( 2+3 ).
  *
  */
 class Plus : public BinaryOperation {
@@ -25,9 +25,9 @@ public:
 	virtual double operate(const std::string& lhs, const std::string& rhs) override;
 };
 
-/*! \brief Операция - .
+/*! \brief РћРїРµСЂР°С†РёСЏ - .
 *
-* Операция вычитания ( 2-3 ).
+* РћРїРµСЂР°С†РёСЏ РІС‹С‡РёС‚Р°РЅРёСЏ ( 2-3 ).
 *
 */
 class Minus : public BinaryOperation {
@@ -36,9 +36,9 @@ public:
 	virtual double operate(const std::string& lhs, const std::string& rhs) override;
 };
 
-/*! \brief Операция * .
+/*! \brief РћРїРµСЂР°С†РёСЏ * .
 *
-* Операция умножения ( 2*3 ).
+* РћРїРµСЂР°С†РёСЏ СѓРјРЅРѕР¶РµРЅРёСЏ ( 2*3 ).
 *
 */
 class Multiplying : public BinaryOperation {
@@ -47,9 +47,9 @@ public:
 	virtual double operate(const std::string& lhs, const std::string& rhs) override;
 };
 
-/*! \brief Операция / .
+/*! \brief РћРїРµСЂР°С†РёСЏ / .
 *
-* Операция деления ( 2/3 ).
+* РћРїРµСЂР°С†РёСЏ РґРµР»РµРЅРёСЏ ( 2/3 ).
 *
 */
 class Division : public BinaryOperation {
@@ -58,9 +58,9 @@ public:
 	virtual double operate(const std::string& lhs, const std::string& rhs) override;
 };
 
-/*! \brief Операция ^ .
+/*! \brief РћРїРµСЂР°С†РёСЏ ^ .
 *
-* Операция степени ( 2^3 ).
+* РћРїРµСЂР°С†РёСЏ СЃС‚РµРїРµРЅРё ( 2^3 ).
 *
 */
 class Power : public BinaryOperation {
@@ -70,10 +70,10 @@ public:
 };
 
 
-// -------------------------- УНАРНЫЕ ОПЕРАЦИИ
+// -------------------------- РЈРќРђР РќР«Р• РћРџР•Р РђР¦РР
 
 
-/*! \brief Арксинус .
+/*! \brief РђСЂРєСЃРёРЅСѓСЃ .
 *
 */
 class Arcsin : public UnitOperation {
@@ -84,7 +84,7 @@ public:
 	}
 };
 
-/*! \brief Арккосинус .
+/*! \brief РђСЂРєРєРѕСЃРёРЅСѓСЃ .
 *
 */
 class Arccos : public UnitOperation {
@@ -95,7 +95,7 @@ public:
 	}
 };
 
-/*! \brief Арккотангенс .
+/*! \brief РђСЂРєРєРѕС‚Р°РЅРіРµРЅСЃ .
 *
 */
 class Arcctg : public UnitOperation {
@@ -113,7 +113,7 @@ public:
 	}
 };
 
-/*! \brief Арктангенс .
+/*! \brief РђСЂРєС‚Р°РЅРіРµРЅСЃ .
 *
 */
 class Arctg : public UnitOperation {
@@ -124,7 +124,7 @@ public:
 	}
 };
 
-/*! \brief Косеканс .
+/*! \brief РљРѕСЃРµРєР°РЅСЃ .
 *
 */
 class Cosec : public UnitOperation {
@@ -135,9 +135,9 @@ public:
 	}
 };
 
-/*! \brief Взятие корня .
+/*! \brief Р’Р·СЏС‚РёРµ РєРѕСЂРЅСЏ .
 *
-* Операция аналогична ^(0.5)
+* РћРїРµСЂР°С†РёСЏ Р°РЅР°Р»РѕРіРёС‡РЅР° ^(0.5)
 *
 */
 class Sqrt : public UnitOperation {
@@ -148,7 +148,7 @@ public:
 	}
 };
 
-/*! \brief Секанс гиперболический .
+/*! \brief РЎРµРєР°РЅСЃ РіРёРїРµСЂР±РѕР»РёС‡РµСЃРєРёР№ .
 *
 */
 class Sech : public UnitOperation {
@@ -159,7 +159,7 @@ public:
 	}
 };
 
-/*! \brief Косеканс гиперболический .
+/*! \brief РљРѕСЃРµРєР°РЅСЃ РіРёРїРµСЂР±РѕР»РёС‡РµСЃРєРёР№ .
 *
 */
 class Csch : public UnitOperation {
@@ -170,7 +170,7 @@ public:
 	}
 };
 
-/*! \brief Синус .
+/*! \brief РЎРёРЅСѓСЃ .
 *
 */
 class Sin : public UnitOperation {
@@ -181,7 +181,7 @@ public:
 	}
 };
 
-/*! \brief Косинус .
+/*! \brief РљРѕСЃРёРЅСѓСЃ .
 *
 */
 class Cos : public UnitOperation {
@@ -192,7 +192,7 @@ public:
 	}
 };
 
-/*! \brief Котангенс .
+/*! \brief РљРѕС‚Р°РЅРіРµРЅСЃ .
 *
 */
 class Ctg : public UnitOperation {
@@ -207,7 +207,7 @@ public:
 	}
 };
 
-/*! \brief Секанс .
+/*! \brief РЎРµРєР°РЅСЃ .
 *
 */
 class Sec : public UnitOperation {
@@ -218,7 +218,7 @@ public:
 	}
 };
 
-/*! \brief Котангенс гиперболический .
+/*! \brief РљРѕС‚Р°РЅРіРµРЅСЃ РіРёРїРµСЂР±РѕР»РёС‡РµСЃРєРёР№ .
 *
 */
 class Cth : public UnitOperation {
@@ -229,7 +229,7 @@ public:
 	}
 };
 
-/*! \brief Тангенс .
+/*! \brief РўР°РЅРіРµРЅСЃ .
 *
 */
 class Tg : public UnitOperation {
@@ -240,7 +240,7 @@ public:
 	}
 };
 
-/*! \brief Натуральный логарифм .
+/*! \brief РќР°С‚СѓСЂР°Р»СЊРЅС‹Р№ Р»РѕРіР°СЂРёС„Рј .
 *
 */
 class Ln : public UnitOperation {
@@ -251,7 +251,7 @@ public:
 	}
 };
 
-/*! \brief Десятичный логарифм .
+/*! \brief Р”РµСЃСЏС‚РёС‡РЅС‹Р№ Р»РѕРіР°СЂРёС„Рј .
 *
 */
 class Lg : public UnitOperation {
@@ -262,7 +262,7 @@ public:
 	}
 };
 
-/*! \brief Синус гиперболический .
+/*! \brief РЎРёРЅСѓСЃ РіРёРїРµСЂР±РѕР»РёС‡РµСЃРєРёР№ .
 *
 */
 class Sh : public UnitOperation {
@@ -273,7 +273,7 @@ public:
 	}
 };
 
-/*! \brief Косинус гиперболический .
+/*! \brief РљРѕСЃРёРЅСѓСЃ РіРёРїРµСЂР±РѕР»РёС‡РµСЃРєРёР№ .
 *
 */
 class Ch : public UnitOperation {
@@ -284,7 +284,7 @@ public:
 	}
 };
 
-/*! \brief Тангенс гиперболический .
+/*! \brief РўР°РЅРіРµРЅСЃ РіРёРїРµСЂР±РѕР»РёС‡РµСЃРєРёР№ .
 *
 */
 class Th : public UnitOperation {
@@ -295,7 +295,7 @@ public:
 	}
 };
 
-/*! \brief Унарный минус .
+/*! \brief РЈРЅР°СЂРЅС‹Р№ РјРёРЅСѓСЃ .
 *
 */
 class UnaryMinus : public UnitOperation {
