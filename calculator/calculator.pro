@@ -13,9 +13,9 @@ SOURCES += \
 	src/defcalcoperations.cpp
 
 HEADERS += \
-	../include/abstroperations.h \
+        ./src/abstroperations.h \
+        ./src/defcalcoperations.h \
+        ./src/ForMistakes.h \
 	../include/Calculator.h \
 	../include/DefaultCalculator.h \
-	../include/defcalcoperations.h \
-	./src/ForMistakes.h \
-    ../include/calculatorexceptions.h
+        ../include/calculatorexceptions.h

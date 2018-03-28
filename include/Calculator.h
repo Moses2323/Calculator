@@ -4,10 +4,10 @@
 
 #include <vector>
 #include <memory>
-#include <iomanip>
-#include "abstroperations.h"
 
 namespace my {
+
+class Operation;
 
 /*! \brief Абстрактный класс для калькулятора.
  *
@@ -51,14 +51,11 @@ protected:
 	bool doWithoutSpaces(const std::string& s, std::string& vs) const;
 
 	//! Конструктор. Принимает тип калькулятора.
-	explicit Calculator(OperationsType t) : operationsType_(t) {
-		scobStack_.reserve(10);
-		operations_.reserve(100);
-	}
+	explicit Calculator(OperationsType t);
 
 public:
 	//! Деструктор.
-	virtual ~Calculator() {}
+	virtual ~Calculator();
 
 	//! Функция возвращает тип калькулятора. \details Читает приватное поле operationsType_.
 	OperationsType getOperationsType() const { return operationsType_; }

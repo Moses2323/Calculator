@@ -1,9 +1,17 @@
 #include <Calculator.h>
 
+#include "abstroperations.h"
 #include <calculatorexceptions.h>
 #include "ForMistakes.h"
 
 namespace my {
+
+Calculator::Calculator(Calculator::OperationsType t) : operationsType_(t) {
+	scobStack_.reserve(10);
+	operations_.reserve(100);
+}
+
+Calculator::~Calculator() {}
 
 void Calculator::checkCloseSymbolInStack(char toCheck, char openBracket, char closeBracket) {
 	if (toCheck == closeBracket) {

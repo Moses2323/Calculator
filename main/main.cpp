@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <iomanip>
 
 #include <DefaultCalculator.h>
 #include <calculatorexceptions.h>

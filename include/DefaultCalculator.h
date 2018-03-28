@@ -1,7 +1,7 @@
 #ifndef DEFAULT_CALCULATOR_30042017_GASPARYANMOSES
 #define DEFAULT_CALCULATOR_30042017_GASPARYANMOSES
 
-#include "defcalcoperations.h"
+#include <Calculator.h>
 
 namespace my {
 

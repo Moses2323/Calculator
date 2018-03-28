@@ -1,5 +1,7 @@
 #include "DefaultCalculator.h"
 
+#include "defcalcoperations.h"
+
 namespace my {
 
 DefaultCalculator::DefaultCalculator() : Calculator(Calculator::OperationsType::DefaultCalculator) {
