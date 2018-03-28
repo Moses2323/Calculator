@@ -9,23 +9,27 @@
 
 Пример использования
 
-std::string s = "3 + 2(7-3)";
+```
+std::string s = "3 + 2*(7-3)";
 
 my::DefaultCalculator calc;
 
 double res = calc.calculateIn(s);
 
 std::cout << "result = " << res << std::endl;
+```
 
-Также можно обойтись без создания объекта, использовав статический метод (тогда объект создастся внутри метода статическим образом)
+Можно обойтись без создания объекта, использовав статический метод (тогда объект создастся внутри метода статическим образом)
 
-std::string s = "3 + 2(7-3)";
+```
+std::string s = "3 + 2*(7-3)";
 
 double res = my::DefaultCalculator::calculate(s);
 
 std::cout << "result = " << res << std::endl;
+```
 
-Калькулятор позволяет использовать в качестве скобочек [], (), {} .
+Калькулятор позволяет использовать в качестве скобочек [ ], ( ), { } .
 
-Поддерживает операции +, -, , , ^ (степень), arcsin, arccos, arcctg, arctg, cosec, sec,
+Поддерживает операции +, -, *, /, ^ (степень), arcsin, arccos, arcctg, arctg, cosec, sec,
 sqrt, sech, csch, sin, cos, tg, ctg, sh, ch, th, cth, ln, lg (десятичный логарифм) .
