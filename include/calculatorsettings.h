@@ -1,0 +1,19 @@
+#pragma once
+#ifndef CALCULATORSETTINGS_GASPARYANMOSES28032018
+#define CALCULATORSETTINGS_GASPARYANMOSES28032018
+
+#ifdef _WIN32
+    #define Q_DECL_EXPORT __declspec(dllexport)
+    #define Q_DECL_IMPORT __declspec(dllimport)
+#else
+    #define Q_DECL_EXPORT
+    #define Q_DECL_IMPORT
+#endif
+
+#if defined(CALCULATOR_LIBRARY)
+#  define CALCULATOR_EXPORT Q_DECL_EXPORT
+#else
+#  define CALCULATOR_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // CALCULATORSETTINGS_GASPARYANMOSES28032018

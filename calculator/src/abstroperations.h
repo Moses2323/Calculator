@@ -34,11 +34,11 @@ protected:
 	Calculator& calculator_;
 
 	//! Конструктор. Требует тип, имя операции и калькулятор, к которому можно обращаться для вычисления строк.
-	Operation(const Type& type_in, const std::string& operName_in, Calculator& calculator) : type_(type_in), operName_(operName_in), calculator_(calculator) {}
+	Operation(const Type& type_in, const std::string& operName_in, Calculator& calculator);
 
 public:
 	//! Деструктор.
-	virtual ~Operation() {}
+	virtual ~Operation();
 
 	//! Функция возвращает тип данной операции. \details Читает приватное поле type_.
 	Type type() const { return type_; }
@@ -69,12 +69,7 @@ public:
 	//! Функция вычисляет результат операции по типу " lhs oper rhs ".
 	virtual double operate(const std::string& lhs, const std::string& rhs) = 0;
 	//! Функция проверяет символ. Если true, то символ перед операцией означает, что операция бинарная.
-	virtual bool symbolBeforeIsNum(char c) const {
-		if (isdigit(c) || (c == ')') || (c == ']') || (c == '}'))		//значит это бинарный оператор
-			return true;
-		else                //значит не бинарный оператор
-			return false;
-	}
+	virtual bool symbolBeforeIsNum(char c) const;
 
 };
 
@@ -92,7 +87,7 @@ public:
 class UnitOperation : public Operation {
 public:
 	//! Конструктор. Принимает имя операции и калькулятор, к которому можно обращаться.
-	UnitOperation(const std::string& operName_in, Calculator& calc) : Operation(Type::Unity, operName_in, calc) {}
+	UnitOperation(const std::string& operName_in, Calculator& calc);
 
 	//! Функция вычисляет результат операции по типу " oper s "
 	virtual double operate(const std::string& s) = 0;

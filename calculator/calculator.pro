@@ -10,12 +10,14 @@ DEFINES += CALCULATOR_LIBRARY
 SOURCES += \
 	src/Calculator.cpp \
 	src/DefaultCalculator.cpp \
-	src/defcalcoperations.cpp
+	src/defcalcoperations.cpp \
+    src/abstroperations.cpp
 
 HEADERS += \
         ./src/abstroperations.h \
         ./src/defcalcoperations.h \
         ./src/ForMistakes.h \
-	../include/Calculator.h \
-	../include/DefaultCalculator.h \
-        ../include/calculatorexceptions.h
+        ../include/Calculator.h \
+        ../include/DefaultCalculator.h \
+        ../include/calculatorexceptions.h \
+        ../include/calculatorsettings.h

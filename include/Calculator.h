@@ -5,6 +5,8 @@
 #include <vector>
 #include <memory>
 
+#include <calculatorsettings.h>
+
 namespace my {
 
 class Operation;
@@ -21,7 +23,7 @@ class Operation;
  * Классы-потомки должны лишь заполнять вектор операций.
  * 
  */
-class Calculator {
+class CALCULATOR_EXPORT Calculator {
 	public:
 	//! Перечислимый класс для типа калькулятора.
 	enum class OperationsType : char {

@@ -5,10 +5,13 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <exception>
+
+#include <calculatorsettings.h>
 
 namespace my{
 
-class SyntaxError : std::exception {
+class CALCULATOR_EXPORT SyntaxError : std::exception {
 	std::string funcName_;
 	int line_;
 	std::string fileName_;

@@ -3,6 +3,8 @@
 
 #include <Calculator.h>
 
+#include <calculatorsettings.h>
+
 namespace my {
 
 /*! \brief Обычный калькулятор.
@@ -24,7 +26,7 @@ namespace my {
  * \endcode
  *
  */
-class DefaultCalculator : public Calculator {
+class CALCULATOR_EXPORT DefaultCalculator : public Calculator {
 public:
 	//! Конструктор. Заполняет вектор операций.
 	DefaultCalculator();
