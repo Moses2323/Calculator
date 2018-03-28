@@ -1,23 +1,8 @@
 #include <iostream>
 #include <fstream>
 
-#include <Calculator.h>
 #include <DefaultCalculator.h>
-
-void testDouble() {
-	std::string vs;
-	while (1) {
-		std::cin >> vs;
-		double d;
-		if (my::isDouble(vs,d))
-			std::cout << "it is Double" << std::endl << std::endl;
-		else
-			std::cout << "it is NOT double" << std::endl << std::endl;
-
-		vs.clear();
-		vs = "";
-	}
-}
+#include <calculatorexceptions.h>
 
 void testString() {
 	std::string vs;
@@ -104,10 +89,8 @@ int main() {
 		}
 		catch (my::SyntaxError er) {
 			er.getError();
-			break;
 		}
 	}
 
-//	system("pause");
 	return 0;
 }

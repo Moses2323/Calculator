@@ -1,5 +1,8 @@
 #include <Calculator.h>
 
+#include <calculatorexceptions.h>
+#include "ForMistakes.h"
+
 namespace my {
 
 void Calculator::checkCloseSymbolInStack(char toCheck, char openBracket, char closeBracket) {

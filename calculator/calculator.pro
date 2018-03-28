@@ -17,4 +17,5 @@ HEADERS += \
 	../include/Calculator.h \
 	../include/DefaultCalculator.h \
 	../include/defcalcoperations.h \
-	../include/ForMistakes.h
+	./src/ForMistakes.h \
+    ../include/calculatorexceptions.h
